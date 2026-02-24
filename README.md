@@ -42,25 +42,29 @@ npm run start
 ```
 .
 ├── src/
-│   └── app/            # Next.js App Router pages and layouts
-│       ├── layout.tsx  # Root layout
-│       ├── page.tsx    # Home page
-│       └── globals.css # Global styles
-├── public/             # Static assets
-├── next.config.ts      # Next.js configuration
-├── tsconfig.json       # TypeScript configuration
-├── postcss.config.mjs  # PostCSS configuration (Tailwind CSS)
-└── eslint.config.mjs   # ESLint configuration
+│   ├── app/                  # Next.js App Router pages and layouts
+│   │   ├── layout.tsx        # Root layout
+│   │   ├── page.tsx          # Discount playground UI
+│   │   └── globals.css       # Global styles (Tailwind entry)
+│   └── lib/                  # Domain logic and types
+│       ├── discount-types.ts # Shared types/constants
+│       └── discounts.ts      # Discount engine calculations
+├── public/                   # Static assets
+├── next.config.ts            # Next.js configuration
+├── tsconfig.json             # TypeScript configuration
+├── postcss.config.mjs        # PostCSS configuration (Tailwind CSS)
+├── eslint.config.mjs         # ESLint configuration
+└── package.json
 ```
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server with hot reload |
-| `npm run build` | Build the application for production |
-| `npm run start` | Start the production server |
-| `npm run lint` | Run ESLint to check code quality |
+| Command         | Description                              |
+| --------------- | ---------------------------------------- |
+| `npm run dev`   | Start development server with hot reload |
+| `npm run build` | Build the application for production     |
+| `npm run start` | Start the production server              |
+| `npm run lint`  | Run ESLint to check code quality         |
 
 ## Tech Stack
 
