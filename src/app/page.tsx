@@ -221,7 +221,7 @@ export default function Home() {
         <header className="flex flex-col gap-2">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
-              Discount Playtorium - Take Home Assignment
+              Discount Take Home Assignment
             </h1>
           </div>
         </header>
