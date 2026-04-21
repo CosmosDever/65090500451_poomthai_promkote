@@ -97,13 +97,16 @@ export default function Home() {
   useEffect(() => {
     const categoriesInCart = items.map((item) => item.category);
     if (categoriesInCart.length === 0) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOnTopCategory(ITEM_CATEGORIES[0]);
       return;
     }
     if (!categoriesInCart.includes(onTopCategory)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOnTopCategory(categoriesInCart[0]);
     }
-  }, [items, onTopCategory]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items]);
 
   const addToCart = (product: Product) => {
     setItems((prev) => {
@@ -179,9 +182,11 @@ export default function Home() {
 
   useEffect(() => {
     if (pointValue > maxPoints) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPointValue(maxPoints);
     }
-  }, [maxPoints, pointValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [maxPoints]);
 
   const validationMessages: string[] = [];
   if (

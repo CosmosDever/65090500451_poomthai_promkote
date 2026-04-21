@@ -1,0 +1,42 @@
+name: Deploy to Render
+
+on:
+  workflow_run:
+    workflows: ["CI/CD Pipeline"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to Render
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Trigger Render deployment
+        run: |
+          if [ -z "${{ secrets.RENDER_DEPLOY_HOOK }}" ]; then
+            echo "❌ Error: RENDER_DEPLOY_HOOK secret is not configured"
+            echo "Please add the Render Deploy Hook URL to GitHub Secrets"
+            exit 1
+          fi
+          
+          echo "🚀 Triggering deployment on Render..."
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"ref\": \"main\", \"commit\": \"${{ github.event.workflow_run.head_commit.id }}\"}" \
+            -v
+          
+          echo "✅ Deployment triggered successfully"
+
+      - name: Wait for deployment
+        run: |
+          echo "Deployment has been triggered. Check Render dashboard for status:"
+          echo "https://dashboard.render.com"
+          echo ""
+          echo "Note: This job completes immediately. Render handles the actual deployment asynchronously."
