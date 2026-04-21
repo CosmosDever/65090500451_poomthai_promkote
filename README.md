@@ -1,6 +1,5 @@
 # 65090500451_poomthai_promkote
 
-Playtorium - Take Home Assignment For Developer
 
 This project is a [Next.js](https://nextjs.org) application built with **TypeScript**, **Tailwind CSS**, and the **App Router**.
 
